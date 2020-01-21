@@ -1,5 +1,7 @@
 package com.br.devefc.nossocalendario.rest;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping(path = "/salvar")
-	public ResponseEntity<User> save(@RequestBody User user) {
+	public ResponseEntity<User> save(@Valid @RequestBody User user) {
 		userService.save(user);
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}

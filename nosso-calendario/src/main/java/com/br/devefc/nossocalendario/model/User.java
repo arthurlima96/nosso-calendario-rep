@@ -2,11 +2,16 @@ package com.br.devefc.nossocalendario.model;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class User {
@@ -15,17 +20,25 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
+	@NotBlank(message = "Login Obrigatorio")
+	@NotEmpty(message = "Login não pode ser vazio")
+	@Email(message = "Email deve ser valido")
 	private String login;
+	
+	@NotBlank(message = "Senha Obrigatoria")
+	@NotEmpty(message = "Senha não pode ser vazia")
+	@Size(min = 6, message = "A senha deve ter no minimo 6 caracteres")
 	private String senha;
+	
+	@CreationTimestamp
 	private LocalDateTime acesso_cadastro;
 	
 	public User() {
 	}
 	
-	public User(String login, String senha, LocalDateTime acesso_cadastro) {
+	public User(String login, String senha) {
 		this.login = login;
 		this.senha = senha;
-		this.acesso_cadastro = acesso_cadastro;
 	}
 
 	public Long getId() {
