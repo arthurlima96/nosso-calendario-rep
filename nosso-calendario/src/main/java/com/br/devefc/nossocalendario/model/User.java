@@ -37,12 +37,12 @@ public class User {
 	}
 	
 	public User(
-			@NotBlank(message = "Login Obrigatorio")
-			@NotEmpty(message = "Login não pode ser vazio")
-			@Email(message = "Email deve ser valido")String login, 
-			@NotBlank(message = "Senha Obrigatoria")
-			@NotEmpty(message = "Senha não pode ser vazia")
-			@Size(min = 6, message = "A senha deve ter no minimo 6 caracteres")String senha) {
+			@NotBlank
+			@NotEmpty
+			@Email String login, 
+			@NotBlank
+			@NotEmpty
+			@Size(min = 6)String senha) {
 		this.login = login;
 		this.senha = senha;
 	}
