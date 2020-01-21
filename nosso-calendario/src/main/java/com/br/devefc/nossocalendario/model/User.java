@@ -36,7 +36,13 @@ public class User {
 	public User() {
 	}
 	
-	public User(String login, String senha) {
+	public User(
+			@NotBlank(message = "Login Obrigatorio")
+			@NotEmpty(message = "Login não pode ser vazio")
+			@Email(message = "Email deve ser valido")String login, 
+			@NotBlank(message = "Senha Obrigatoria")
+			@NotEmpty(message = "Senha não pode ser vazia")
+			@Size(min = 6, message = "A senha deve ter no minimo 6 caracteres")String senha) {
 		this.login = login;
 		this.senha = senha;
 	}
@@ -61,8 +67,5 @@ public class User {
 	}
 	public LocalDateTime getAcesso_cadastro() {
 		return acesso_cadastro;
-	}
-	public void setAcesso_cadastro(LocalDateTime acesso_cadastro) {
-		this.acesso_cadastro = acesso_cadastro;
 	}
 }
