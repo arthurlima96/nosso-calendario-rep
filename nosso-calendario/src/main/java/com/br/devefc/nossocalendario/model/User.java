@@ -31,8 +31,7 @@ public class User {
 	@Size(min = 6)
 	private String senha;
 
-	@CreationTimestamp
-	private LocalDateTime acesso_cadastro;
+	private LocalDateTime acesso_cadastro  = LocalDateTime.now();
 
 	public User() {
 	}
