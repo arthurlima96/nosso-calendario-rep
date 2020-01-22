@@ -59,10 +59,6 @@ public class User {
 		return senha;
 	}
 
-	public void setSenha(EncodeSenha senha) {
-		this.senha = senha.encodeSenha();
-	}
-
 	public LocalDateTime getAcesso_cadastro() {
 		return acesso_cadastro;
 	}
