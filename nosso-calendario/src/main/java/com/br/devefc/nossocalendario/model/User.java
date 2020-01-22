@@ -21,14 +21,14 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@NotBlank(message = "Login Obrigatorio")
-	@NotEmpty(message = "Login não pode ser vazio")
-	@Email(message = "Email deve ser valido")
+	@NotBlank
+	@NotEmpty
+	@Email
 	private String login;
 
-	@NotBlank(message = "Senha Obrigatoria")
-	@NotEmpty(message = "Senha não pode ser vazia")
-	@Size(min = 6, message = "A senha deve ter no minimo 6 caracteres")
+	@NotBlank
+	@NotEmpty
+	@Size(min = 6)
 	private String senha;
 
 	@CreationTimestamp
