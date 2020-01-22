@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.br.devefc.nossocalendario.helpers.EncodeSenha;
+
 @Entity
 public class User {
 
@@ -36,15 +38,9 @@ public class User {
 	public User() {
 	}
 
-	public User(@NotBlank @NotEmpty @Email String login, @NotBlank @NotEmpty @Size(min = 6) String senha) {
+	public User(@NotBlank @NotEmpty @Email String login,EncodeSenha senha) {
 		this.login = login;
-		this.senha = this.encodeSenha(senha);
-	}
-
-	private String encodeSenha(String senha) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
-		String encodedSenha = encoder.encode(senha);
-		return encodedSenha;
+		this.senha = senha.encodeSenha();
 	}
 
 	public Long getId() {
@@ -63,8 +59,8 @@ public class User {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = this.encodeSenha(senha);
+	public void setSenha(EncodeSenha senha) {
+		this.senha = senha.encodeSenha();
 	}
 
 	public LocalDateTime getAcesso_cadastro() {

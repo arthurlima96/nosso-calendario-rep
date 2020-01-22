@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.br.devefc.nossocalendario.helpers.EncodeSenha;
 import com.br.devefc.nossocalendario.model.User;
 
 public class UserForm {
@@ -20,7 +21,7 @@ public class UserForm {
 	private String senha;
 
 	public User novoUser() {
-		return new User(login, senha);
+		return new User(login, new EncodeSenha(senha));
 	}
 
 	public String getLogin() {
