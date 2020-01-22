@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.devefc.nossocalendario.model.User;
 import com.br.devefc.nossocalendario.repository.UserRepository;
 
 @RestController
@@ -21,8 +20,8 @@ public class UserController {
 	private UserRepository userRepository;
 
 	@PostMapping(path = "/salvar")
-	public ResponseEntity<User> save(@Valid @RequestBody User user) {
-		userRepository.save(user);
+	public ResponseEntity<UserForm> save(@Valid @RequestBody UserForm user) {
+		userRepository.save(user.novoUser());
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 }
