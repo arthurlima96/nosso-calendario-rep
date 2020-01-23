@@ -17,20 +17,9 @@ public class AgendaForm {
 	@NotEmpty(message = " A descrição não pode ser vazia")
 	@Size(max = 255, message = "A descricao deve ter no maximo 255 caracteres")
 	private String descricao;
-	
-	@NotNull(message = " O dono não pode ser nulo")
-	private UserForm dono;
-	
-	public Agenda novaAgenda() {
-		return new Agenda(nome, descricao, dono.novoUser());
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+		
+	public Agenda novaAgenda(User user) {
+		return new Agenda(user.getNome(), descricao,user);
 	}
 
 	public String getDescricao() {
@@ -39,13 +28,5 @@ public class AgendaForm {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public UserForm getDono() {
-		return dono;
-	}
-
-	public void setDono(UserForm dono) {
-		this.dono = dono;
 	}
 }

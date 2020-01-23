@@ -32,15 +32,20 @@ public class User {
 	@NotEmpty
 	@Size(min = 6)
 	private String senha;
+	
+	@NotBlank
+	@NotEmpty
+	private String nome;
 
 	private LocalDateTime acesso_cadastro  = LocalDateTime.now();
 
 	public User() {
 	}
 
-	public User(@NotBlank @NotEmpty @Email String login,EncodeSenha senha) {
+	public User(@NotBlank @NotEmpty @Email String login,EncodeSenha senha,@NotBlank @NotEmpty String nome) {
 		this.login = login;
 		this.senha = senha.encodeSenha();
+		this.nome = nome;
 	}
 
 	public Long getId() {
@@ -49,6 +54,10 @@ public class User {
 
 	public String getLogin() {
 		return login;
+	}
+	
+	public String getNome(){
+		return nome;
 	}
 
 	public void setLogin(String login) {

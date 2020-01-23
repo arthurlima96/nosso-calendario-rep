@@ -28,7 +28,7 @@ public class Agenda {
 	@NotNull
 	@ManyToOne
 	private User dono;
-	
+		
 	public Agenda() {
 	}
 
