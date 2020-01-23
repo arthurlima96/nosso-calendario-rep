@@ -19,10 +19,10 @@ public class AgendaForm {
 	private String descricao;
 	
 	@NotNull(message = " O dono não pode ser nulo")
-	private User dono;
+	private UserForm dono;
 	
 	public Agenda novaAgenda() {
-		return new Agenda(nome, descricao, dono);
+		return new Agenda(nome, descricao, dono.novoUser());
 	}
 
 	public String getNome() {
@@ -41,13 +41,11 @@ public class AgendaForm {
 		this.descricao = descricao;
 	}
 
-	public User getDono() {
+	public UserForm getDono() {
 		return dono;
 	}
 
-	public void setDono(User dono) {
+	public void setDono(UserForm dono) {
 		this.dono = dono;
 	}
-	
-	
 }
