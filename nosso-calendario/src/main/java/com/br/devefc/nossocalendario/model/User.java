@@ -40,24 +40,8 @@ public class User {
 		this.login = login;
 		this.senha = senha.encodeSenha();
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getLogin() {
-		return login;
-	}
 	
 	public String getNome(){
 		return nome;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public LocalDateTime getAcesso_cadastro() {
-		return acesso_cadastro;
 	}
 }
