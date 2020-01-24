@@ -54,6 +54,4 @@ public class Agenda {
 	public User getDono() {
 		return dono;
 	}
-	
-	
 }

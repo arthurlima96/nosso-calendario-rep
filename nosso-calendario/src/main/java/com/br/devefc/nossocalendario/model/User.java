@@ -24,17 +24,14 @@ public class User {
 	private Long id;
 
 	@NotBlank
-	@NotEmpty
 	@Email
 	private String login;
 
 	@NotBlank
-	@NotEmpty
 	@Size(min = 6)
 	private String senha;
 	
 	@NotBlank
-	@NotEmpty
 	private String nome;
 
 	private LocalDateTime acesso_cadastro  = LocalDateTime.now();
@@ -42,7 +39,7 @@ public class User {
 	public User() {
 	}
 
-	public User(@NotBlank @NotEmpty @Email String login,EncodeSenha senha,@NotBlank @NotEmpty String nome) {
+	public User(@NotBlank @Email String login,EncodeSenha senha,@NotBlank String nome) {
 		this.login = login;
 		this.senha = senha.encodeSenha();
 		this.nome = nome;
