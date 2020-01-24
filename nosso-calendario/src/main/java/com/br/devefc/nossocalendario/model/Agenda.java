@@ -35,11 +35,7 @@ public class Agenda {
 	
 	public Agenda(@NotNull User user) {
 		this.nome = user.getNome();
-		this.setDescricao(user.getNome());
+		this.descricao = "Agenda do(a) "+user.getNome();
 		this.dono = user;
 	}
-	
-	private void setDescricao(@NotBlank @Size(max = 255) String descricao) {
-		this.descricao =  "Agenda do(a) "+descricao;
 	}
-}
