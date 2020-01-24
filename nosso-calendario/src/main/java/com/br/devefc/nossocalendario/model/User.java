@@ -8,11 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.br.devefc.nossocalendario.helpers.EncodeSenha;
 
@@ -24,42 +20,28 @@ public class User {
 	private Long id;
 
 	@NotBlank
-	@NotEmpty
 	@Email
 	private String login;
 
 	@NotBlank
-	@NotEmpty
 	@Size(min = 6)
 	private String senha;
+	
+	@NotBlank
+	private String nome;
 
 	private LocalDateTime acesso_cadastro  = LocalDateTime.now();
 
 	public User() {
 	}
 
-	public User(@NotBlank @NotEmpty @Email String login,EncodeSenha senha) {
+	public User(@NotBlank String nome, @NotBlank @Email String login,EncodeSenha senha) {
+		this.nome = nome;
 		this.login = login;
 		this.senha = senha.encodeSenha();
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public LocalDateTime getAcesso_cadastro() {
-		return acesso_cadastro;
+	
+	public String getNome(){
+		return nome;
 	}
 }
