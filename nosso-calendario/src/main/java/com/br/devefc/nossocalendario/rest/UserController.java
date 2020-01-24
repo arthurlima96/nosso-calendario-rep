@@ -29,7 +29,7 @@ public class UserController {
 	public ResponseEntity<UserForm> save(@Valid @RequestBody UserForm userForm) {
 		User user = userForm.novoUser();
 		userRepository.save(user);
-		agendaRepository.save(new Agenda(user.getNome(), "Agenda do(a) "+user.getNome(), user));		
+		agendaRepository.save(new Agenda(user));		
 		return new ResponseEntity<>(userForm, HttpStatus.OK);
 	}
 }

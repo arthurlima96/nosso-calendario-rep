@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,11 +32,18 @@ public class Agenda {
 		
 	public Agenda() {
 	}
+	
+	public Agenda(@NotNull User user) {
+		this.setNome(user.getNome());
+		this.setDescricao(user.getNome());
+		this.dono = user;
+	}
 
-	public Agenda(@NotNull @NotEmpty String nome, @NotNull @NotEmpty @Size(max = 255) String descricao,
-			@NotNull User dono) {
+	private void setNome(@NotBlank String nome) {
 		this.nome = nome;
-		this.descricao = descricao;
-		this.dono = dono;
+	}
+	
+	private void setDescricao(@NotBlank @Size(max = 255) String descricao) {
+		this.descricao =  "Agenda do(a) "+descricao;
 	}
 }
