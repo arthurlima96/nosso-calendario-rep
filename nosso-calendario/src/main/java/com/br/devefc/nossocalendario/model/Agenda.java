@@ -34,13 +34,9 @@ public class Agenda {
 	}
 	
 	public Agenda(@NotNull User user) {
-		this.setNome(user.getNome());
+		this.nome = user.getNome();
 		this.setDescricao(user.getNome());
 		this.dono = user;
-	}
-
-	private void setNome(@NotBlank String nome) {
-		this.nome = nome;
 	}
 	
 	private void setDescricao(@NotBlank @Size(max = 255) String descricao) {
