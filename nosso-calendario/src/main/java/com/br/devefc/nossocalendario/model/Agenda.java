@@ -38,20 +38,4 @@ public class Agenda {
 		this.descricao = descricao;
 		this.dono = dono;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public User getDono() {
-		return dono;
-	}
 }
