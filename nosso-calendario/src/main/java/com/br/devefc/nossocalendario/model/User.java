@@ -8,11 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.br.devefc.nossocalendario.helpers.EncodeSenha;
 
@@ -39,10 +35,10 @@ public class User {
 	public User() {
 	}
 
-	public User(@NotBlank @Email String login,EncodeSenha senha,@NotBlank String nome) {
+	public User(@NotBlank String nome, @NotBlank @Email String login,EncodeSenha senha) {
+		this.nome = nome;
 		this.login = login;
 		this.senha = senha.encodeSenha();
-		this.nome = nome;
 	}
 
 	public Long getId() {
