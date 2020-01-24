@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.devefc.nossocalendario.model.Agenda;
 import com.br.devefc.nossocalendario.model.User;
 import com.br.devefc.nossocalendario.repository.AgendaRepository;
 import com.br.devefc.nossocalendario.repository.UserRepository;
@@ -28,7 +29,7 @@ public class UserController {
 	public ResponseEntity<UserForm> save(@Valid @RequestBody UserForm userForm) {
 		User user = userForm.novoUser();
 		userRepository.save(user);
-		agendaRepository.saveAll(userForm.novasAgendas(user));		
+		agendaRepository.save(new Agenda(user.getNome(), "Agenda do(a) "+user.getNome(), user));		
 		return new ResponseEntity<>(userForm, HttpStatus.OK);
 	}
 }

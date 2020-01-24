@@ -29,18 +29,11 @@ public class UserForm {
 	@NotEmpty(message = "Nome não pode ser vazio")
 	private String nome;
 	
-	private List<AgendaForm> agendasForm = new ArrayList<>();
 
 	public User novoUser() {
-		return new User(login, new EncodeSenha(senha),nome);
+		return new User(nome, login, new EncodeSenha(senha));
 	}
 
-	public List<Agenda> novasAgendas(User user){
-		return agendasForm.stream()
-				.map(a -> new Agenda(user.getNome(),a.getDescricao(),user))
-				.collect(Collectors.toList());
-	}
-	
 	public String getLogin() {
 		return login;
 	}
@@ -55,14 +48,6 @@ public class UserForm {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public List<AgendaForm> getAgendasForm() {
-		return agendasForm;
-	}
-
-	public void setAgendasForm(List<AgendaForm> agendasForm) {
-		this.agendasForm = agendasForm;
 	}
 
 	public String getNome() {
