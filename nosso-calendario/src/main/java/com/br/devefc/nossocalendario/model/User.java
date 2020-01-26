@@ -44,4 +44,12 @@ public class User {
 	public String getNome(){
 		return nome;
 	}
+	
+	public String getLogin() {
+		return login;
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
 }
