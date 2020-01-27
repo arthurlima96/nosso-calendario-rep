@@ -4,7 +4,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,12 @@ public class UserController {
 	@Autowired
 	private AgendaRepository agendaRepository;
 
-	@PostMapping(path = "/salvar")
+	@GetMapping(path = "/home")
+	public String home() {
+		return "Usuario logado";
+	}
+	
+	@PostMapping(path = "/salvar",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserForm> save(@Valid @RequestBody UserForm userForm) {
 		User user = userForm.novoUser();
 		userRepository.save(user);
